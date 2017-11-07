@@ -14,7 +14,14 @@ class MainPage(webapp2.RequestHandler):
               </form>
             </body>
             </html>""")
+class Greeting(webapp2.RequestHandler):
+    def post(self):
+        username = self.request.get("my_name")
+        welcome_string = """<html><body>
+                          Hi there, {}!
+                          </body></html>""".format(username)
+        self.response.headers["Content-Type"] = "text/html"
+        self.response.write(welcome_string)
 
-routes = [('/', MainPage)]
-
+routes = [('/', MainPage), ('/welcome', Greeting)]
 app = webapp2.WSGIApplication(routes, debug=True)
