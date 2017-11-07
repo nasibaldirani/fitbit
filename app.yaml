@@ -1,8 +1,7 @@
-application: hello
-version: 1
 runtime: python27
 api_version: 1
-threadsafe: false
+threadsafe: true
+
 handlers:
 - url: /.*
-  script: hello.my_app
+  script: main.app
